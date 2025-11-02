@@ -7,114 +7,119 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Morphophonology Article',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
+        useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const ArticleScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class ArticleScreen extends StatelessWidget {
+  const ArticleScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    final textTheme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
+        title: const Text('Linguistics Corner'),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text('$_counter', style: Theme.of(context).textTheme.headlineMedium),
-          ],
+      body: const SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Morphophonology: Where Sound and Structure Meet',
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 16),
+              Text(
+                'In the intricate machinery of language, two fundamental components are morphology—the study of word formation—and phonology—the study of sound systems. Bridging these two fields is a fascinating area of linguistics known as morphophonology.',
+                style: TextStyle(fontSize: 16, height: 1.5),
+              ),
+              SizedBox(height: 16),
+              Text(
+                'What is Morphophonology?',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Morphophonology (or morphophonemics) is the study of how the pronunciation of morphemes—the smallest meaningful units of language—changes depending on the context in which they appear. In simpler terms, it examines the phonological variations of morphemes when they are combined to form words. These variations are known as allomorphs.',
+                style: TextStyle(fontSize: 16, height: 1.5),
+              ),
+              SizedBox(height: 16),
+              Text(
+                'A Classic Example: English Plurals',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'One of the most accessible examples of morphophonological alternation can be found in the English plural marker "-s". While written the same, its pronunciation changes predictably based on the final sound of the noun it attaches to:',
+                style: TextStyle(fontSize: 16, height: 1.5),
+              ),
+              SizedBox(height: 8),
+              Padding(
+                padding: EdgeInsets.only(left: 16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('• /s/ after voiceless consonants (e.g., cats, rocks, lamps).', style: TextStyle(fontSize: 16, height: 1.5)),
+                    Text('• /z/ after voiced consonants and vowels (e.g., dogs, bees, ribs).', style: TextStyle(fontSize: 16, height: 1.5)),
+                    Text('• /ɪz/ or /əz/ after sibilant sounds (e.g., buses, judges, boxes).', style: TextStyle(fontSize: 16, height: 1.5)),
+                  ],
+                ),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'The choice between /s/, /z/, and /ɪz/ is not random; it is governed by phonological rules that make the word easier to pronounce. This is morphophonology in action.',
+                style: TextStyle(fontSize: 16, height: 1.5),
+              ),
+              SizedBox(height: 16),
+              Text(
+                'Another Case: The Past Tense',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'A similar pattern occurs with the regular past tense marker "-ed":',
+                style: TextStyle(fontSize: 16, height: 1.5),
+              ),
+              SizedBox(height: 8),
+              Padding(
+                padding: EdgeInsets.only(left: 16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('• /t/ after voiceless consonants (e.g., walked, laughed, kissed).', style: TextStyle(fontSize: 16, height: 1.5)),
+                    Text('• /d/ after voiced consonants and vowels (e.g., jogged, played, hummed).', style: TextStyle(fontSize: 16, height: 1.5)),
+                    Text('• /ɪd/ or /əd/ after /t/ or /d/ sounds (e.g., waited, needed, faded).', style: TextStyle(fontSize: 16, height: 1.5)),
+                  ],
+                ),
+              ),
+              SizedBox(height: 16),
+              Text(
+                'Why It Matters',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 8),
+              Text(
+                'Morphophonology reveals that language is not just a collection of arbitrary rules but a highly systematic and efficient system. It shows how sounds and word parts adapt to each other in predictable ways, governed by principles of articulation and phonological structure. Understanding these interactions is key to comprehending the elegant complexity of human language.',
+                style: TextStyle(fontSize: 16, height: 1.5),
+              ),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
